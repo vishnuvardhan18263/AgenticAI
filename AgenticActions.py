@@ -1,17 +1,15 @@
-
 from azure.ai.projects import AIProjectClient
 from azure.identity import InteractiveBrowserCredential
 import re
+from dotenv import load_dotenv
+import os
 
-# Correct endpoint (just the URL part, no semicolon-separated extras)
-endpoint = "https://eastus2.api.azureml.ms"
+load_dotenv()  # Loads variables from .env
 
-# Replace with your actual values
-api_key = "3132BU5eu*"
-# endpoint = "https://eastus2.api.azureml.ms;076e3fb5-5558-4a06-971e-1580ed0569c7;ODL-sandbox-1668013-02;lagaan"  # e.g., https://eastus2.api.azureml.ms
-subscription_id = "076e3fb5*"
-resource_group = "ODL-*"
-project_name = "ProjectName"
+endpoint = os.getenv("AZURE_ENDPOINT")
+subscription_id = os.getenv("AZURE_SUBSCRIPTION_ID")
+resource_group = os.getenv("AZURE_RESOURCE_GROUP")
+project_name = os.getenv("AZURE_PROJECT_NAME")
 
 # Authenticate using API key
 credential = InteractiveBrowserCredential()
